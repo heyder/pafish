@@ -1,6 +1,8 @@
 
 #include <windows.h>
 #include <string.h>
+#include <ctype.h>
+#include <stdio.h>
 
 #include "vbox.h"
 
@@ -109,9 +111,45 @@ int vbox_reg_key4() {
     }
 }
 
+int vbox_reg_key5(){
+    HKEY regkey;
+    LONG retu;
+    char dwValue[1024];
+    DWORD  dwSize;
+    DWORD lpcMaxSubKeyLen;     
+    int dwIndex;
+
+    retu = RegOpenKeyEx(HKEY_LOCAL_MACHINE, "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall", 0, KEY_READ, &regkey);
+    if( retu == ERROR_SUCCESS){
+        DWORD  dwSize = sizeof(dwValue);
+        RegQueryInfoKey(regkey,NULL,NULL,NULL,&lpcMaxSubKeyLen,NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+        for(dwIndex=0; dwIndex< lpcMaxSubKeyLen; dwIndex++){
+            dwSize = sizeof(dwValue);
+            retu = RegEnumKeyEx(regkey,dwIndex,dwValue,&dwSize,NULL,NULL,NULL,NULL);            
+            if( retu == ERROR_SUCCESS){
+                if (strstr(CharUpper(dwValue),"VIRTUALBOX") != NULL){                    
+                    return 0;
+                }                
+            }
+            else {
+                return 1;
+            }
+        }
+        RegCloseKey(regkey);
+    }
+    else {
+        return 1;
+    }
+}
+
+
+
+
+
 int vbox_sysfile1() {
     DWORD ret;
     ret = GetFileAttributes("C:\\WINDOWS\\system32\\drivers\\VBoxMouse.sys");
+    //printf("Debug: %s \n", ret);
     if (ret != INVALID_FILE_ATTRIBUTES) {
         return 0;
     }
