@@ -1,5 +1,5 @@
-CC        = i686-pc-mingw32-gcc
-WINDRES   = i686-pc-mingw32-windres
+CC        = i586-mingw32msvc-gcc
+WINDRES   = i586-mingw32msvc-windres
 OBJDIR    = Objects/MingW
 SRC       = $(wildcard *.c)
 OBJ       = $(SRC:%.c=$(OBJDIR)/%.o) $(OBJDIR)/pafish_private.res
