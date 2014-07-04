@@ -23,21 +23,10 @@ Examples of execution (v025 all of them):
 
 # Certificate
 
-All releases from v024 will be shipped signed by the original development team. Consider everything without our certificate as unofficial, you can check it against the certificates present in the binaries from this repository.
-
-# DLL
-
-Some software projects may be interested in use some of the functions pafish brings. To make it possible, [pafish-dll](https://github.com/a0rtega/pafish-dll) is a side project to maintain a DLL with all the features present on pafish.
-
-# Build
-
-Pafish is written in C and developed with [wxDev-C++](http://wxdsgn.sourceforge.net/).
+All releases from v024 will be shipped signed by the original development team. Consider everything without our certificate as unofficial.
 
 # Author
 
-Alberto Ortega (@[a0rtega](https://twitter.com/#!/a0rtega) - [profile](http://aortega.badtrace.com))
+Alberto Ortega (@[a0rtega](https://twitter.com/#!/a0rtega)) 
 
-# Contributions
-
-Feel free to send me malware samples or more tricks to add. GPG ID: 6A06CF5A
 
